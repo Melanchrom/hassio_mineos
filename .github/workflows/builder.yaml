@@ -39,6 +39,12 @@ jobs:
           APPS: ${{ steps.apps.outputs.addons }}
           CHANGED_FILES: ${{ steps.changed_files.outputs.all_changed_files }}
         run: |
+          echo "=== DEBUG INFO ==="
+          echo "APPS: ${APPS}"
+          echo "CHANGED_FILES: ${CHANGED_FILES}"
+          echo "MONITORED_FILES: ${MONITORED_FILES}"
+          echo "===================="
+          
           changed_apps=()
 
           # If the workflow file itself changed, rebuild all apps
@@ -47,13 +53,18 @@ jobs:
           else
             for app in ${APPS}; do
               for file in ${MONITORED_FILES}; do
-                if [[ "${CHANGED_FILES}" == *"${app}/${file}"* ]]; then
+                # Escape regex special characters in the file path
+                escaped_pattern=$(printf '%s\n' "${app}/${file}" | sed 's/[[\.*^$/]/\\&/g')
+                if [[ "${CHANGED_FILES}" =~ ${escaped_pattern} ]]; then
+                  echo "MATCH FOUND: ${app}/${file}"
                   changed_apps+=("${app}")
                   break
                 fi
               done
             done
           fi
+          
+          echo "changed_apps: ${changed_apps[@]}"
 
           if [[ ${#changed_apps[@]} -gt 0 ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
