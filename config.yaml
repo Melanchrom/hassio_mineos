@@ -1,0 +1,27 @@
+version: 1.0.0
+slug: mine_os_nodejs
+name: Mine OS NodeJs
+description: Mine OS NodeJs Intereface for Home Assistant
+arch:
+  - aarch64
+  - amd64
+init: false
+webui: http://[HOST]:[PORT:8443]
+ports:
+  8443/tcp: 8443
+  25565/tcp: 25565
+  24454/udp: 24454
+  5000/tcp: 5000
+ports_description:
+  8443/tcp: Web Interface
+  25565/tcp: Minecraft
+  24454/udp: Voice Chat
+  5000/tcp: Minecraft Map
+map:
+  - type: addon_config
+    read_only: False
+    path: /var/games/minecraft
+options:
+  password: null
+schema:
+  password: password
