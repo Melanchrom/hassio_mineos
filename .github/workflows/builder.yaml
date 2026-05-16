@@ -74,7 +74,7 @@ jobs:
       fail-fast: false
       matrix:
         app: ${{ fromJSON(needs.init.outputs.changed_apps) }}
-    uses: \.github/workflows/build-app.yaml
+    uses: ./.github/workflows/build-app.yaml
     with:
       app: ${{ matrix.app }}
       publish: ${{ github.event_name == 'push' }}
