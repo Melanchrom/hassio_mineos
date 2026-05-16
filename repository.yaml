@@ -1,0 +1,4 @@
+# https://developers.home-assistant.io/docs/apps/repository#repository-configuration
+name: Melanchroms Home Assistant app repository
+url: 'https://github.com/Melanchrom/hassio_mineos'
+maintainer: Melanchrom <melanchrom@gmail.com>
