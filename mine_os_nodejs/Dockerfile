@@ -17,7 +17,7 @@ RUN chmod +x generate-sslcert.sh mineos_console.js webui.js
 
 
 RUN npm install -g pnpm
-RUN pnpm install --allow-scripts
+RUN pnpm install --dangerously-allow-all-builds
 
 # Copy data for add-on
 COPY mineos.conf /etc/mineos.conf
