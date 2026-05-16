@@ -27,4 +27,4 @@ options:
   password: null
 schema:
   password: password
-image: "ghcr.io/melanchrom/mineos-nodejs"
+image: "ghcr.io/Melanchrom/mine_os_nodejs"
