@@ -18,6 +18,7 @@ ports_description:
   25565/tcp: Minecraft
   24454/udp: Voice Chat
   5000/tcp: Minecraft Map
+host_network: true
 map:
   - type: addon_config
     read_only: False
