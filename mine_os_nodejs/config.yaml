@@ -1,4 +1,4 @@
-version: 1.0.0
+version: 1.0.1
 slug: mine_os_nodejs
 name: Mine OS NodeJs
 description: Mine OS NodeJs Intereface for Home Assistant
@@ -8,6 +8,9 @@ arch:
 url: 'https://github.com/Melanchrom/hassio_mineos/mine_os_nodejs'
 init: false
 webui: http://[HOST]:[PORT:8443]
+ingress: true
+ingress_port: 8443
+panel_icon: mdi:minecraft
 ports:
   8443/tcp: 8443
   25565/tcp: 25565
@@ -23,6 +26,8 @@ map:
   - type: addon_config
     read_only: False
     path: /var/games/minecraft
+  - type: share
+    read_only: False
 options:
   password: null
 schema:
