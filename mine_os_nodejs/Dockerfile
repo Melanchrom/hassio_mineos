@@ -9,7 +9,7 @@ RUN apk add git rdiff-backup screen rsync python3 g++ make wget nodejs npm
 RUN apk add openjdk25 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community/
 
 WORKDIR "/usr/games"
-RUN git clone https://github.com/Melanchrom/mineos-node.git minecraft
+RUN git clone --depth=1 --branch v1.0.0 https://github.com/Melanchrom/mineos-node.git minecraft
 
 WORKDIR "/usr/games/minecraft"
 RUN git config core.filemode false
